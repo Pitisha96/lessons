@@ -5,6 +5,7 @@ import com.pitisha96.animals.Pet;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Клиент
@@ -76,5 +77,19 @@ public class Client {
      */
     public void deletePet(String namePet){
         pets.removeIf(pet -> pet.getName().equals(namePet));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Client client = (Client) o;
+        return Objects.equals(name, client.name) &&
+                Objects.equals(pets, client.pets);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, pets);
     }
 }
