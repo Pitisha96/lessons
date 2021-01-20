@@ -24,9 +24,11 @@ public class ClinicRunner {
                     clinic.doAction(validator);
                 }catch (UnsupportedOperationException e){
                     System.out.println("такая операция не поддерживается");
+                    throw e;
                 }catch (IllegalArgumentException e){
                     validator.getString("");
                     System.out.println("вы ввели не корректные данные");
+                    throw e;
                 }
             }while(true);
         }
