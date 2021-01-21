@@ -7,6 +7,7 @@
     <groupId>com.pitisha96</groupId>
     <artifactId>lessons</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
 
 
@@ -53,6 +54,19 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <skipTests>false</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.pitisha96.ClinicRunner</mainClass>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
