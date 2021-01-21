@@ -31,14 +31,12 @@ public class Validator implements Closeable{
     public String getString(String message)
             throws IllegalArgumentException{
         String result;
-        this.scanner.useDelimiter("\\n");
         System.out.print(message);
         try{
             result=this.scanner.next();
         }catch (NoSuchElementException ex){
             throw new IllegalArgumentException("Вы ничего не ввели");
         }
-        this.scanner.useDelimiter("\\n");
         return result;
     }
 
@@ -54,6 +52,7 @@ public class Validator implements Closeable{
         System.out.print(message);
         try{
             result=this.scanner.nextInt();
+            scanner.next();
         }catch (InputMismatchException ex){
             throw new IllegalArgumentException("Вы ввели не верное значение");
         }
