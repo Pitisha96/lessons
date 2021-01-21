@@ -18,6 +18,8 @@ public class ClinicRunner {
             clinic.loadActions(new deleteClientAction());
             clinic.loadActions(new DeletePetAction());
             clinic.loadActions(new SearchPetAction());
+            clinic.loadActions(new ShowClientsAction());
+            System.setProperty("console.encoding","Windows-1251");
             do{
                 try {
                     clinic.show();

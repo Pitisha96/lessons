@@ -17,6 +17,14 @@ public class Clinic implements IClinic{
     private Map<Integer, Client> clients=new LinkedHashMap<>();
 
     /**
+     * Возвращает список клиентов
+     * @return список клиентов
+     */
+    public Map<Integer, Client> getClients() {
+        return clients;
+    }
+
+    /**
      * {@inheritDoc}
      * @param client Клиент
      */

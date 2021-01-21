@@ -4,6 +4,8 @@ import com.pitisha96.animals.Pet;
 import com.pitisha96.clients.Client;
 
 import java.util.List;
+import java.util.Map;
+
 /**
  * Интерфейс клиники
  * @author Илья Петровский
@@ -64,4 +66,10 @@ public interface IClinic {
      * @return Список клиентов с такими питомцами
      */
     List<Client> searchPet(String namePet);
+
+    /**
+     * Возвращает список клиентов
+     * @return список клиентов
+     */
+    Map<Integer, Client> getClients();
 }
