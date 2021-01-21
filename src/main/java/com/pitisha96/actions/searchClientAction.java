@@ -4,6 +4,9 @@ import com.pitisha96.IClinic;
 import com.pitisha96.Validator;
 import com.pitisha96.clients.Client;
 
+import java.io.IOException;
+import java.io.PrintStream;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -22,7 +25,14 @@ public class searchClientAction implements Action{
     public void execute(IClinic clinic, Validator validator) {
         List<Client> clients=clinic.searchClient(validator.getString("Имя клиента: "));
         System.out.println("\nРезультат поиска:");
-        clients.forEach(c-> System.out.println(c.getName()));
+        clients.forEach(c->{
+            try {
+                PrintStream stream = new PrintStream(System.out, false, "Windows-1251");
+                stream.println(c.getName());
+            }catch (UnsupportedEncodingException e){
+                e.printStackTrace();
+            }
+        });
     }
 
     /**
