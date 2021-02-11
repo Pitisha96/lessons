@@ -20,7 +20,7 @@ public class Clinic implements IClinic{
      * Возвращает список клиентов
      * @return список клиентов
      */
-    public Map<Integer, Client> getClients() {
+    public synchronized Map<Integer, Client> getClients() {
         return clients;
     }
 
@@ -29,13 +29,11 @@ public class Clinic implements IClinic{
      * @param client Клиент
      */
     @Override
-    public void addClient(final Client client){
-        if(clients!=null){
-            clients.put(++countId,client);
-        }else{
-            clients=new LinkedHashMap<>();
-            clients.put(++countId,client);
+    public synchronized void addClient(final Client client){
+        if (clients == null) {
+            clients = new LinkedHashMap<>();
         }
+        clients.put(++countId,client);
     }
 
     /**
@@ -44,7 +42,7 @@ public class Clinic implements IClinic{
      * @param pet Новый питомец
      */
     @Override
-    public void addPet(String name, Pet pet){
+    public synchronized void addPet(String name, Pet pet){
         for(Client simple_client:clients.values()){
             if(simple_client.getName().equals(name)){
                 simple_client.setPets(pet);
@@ -58,7 +56,7 @@ public class Clinic implements IClinic{
      * @param otherName Новое имя клиента
      */
     @Override
-    public void updateClient(String name,String otherName){
+    public synchronized void updateClient(String name,String otherName){
         for(Client simple_client:clients.values()){
             if(simple_client.getName().equals(name)){
                 simple_client.setName(otherName);
@@ -73,7 +71,7 @@ public class Clinic implements IClinic{
      * @param otherNamePet Новое имя питомца
      */
     @Override
-    public void updatePet(String nameClient,String namePet,String otherNamePet){
+    public synchronized void updatePet(String nameClient,String namePet,String otherNamePet){
         for(Client simple_client:clients.values()){
             if(simple_client.getName().equals(nameClient)){
                 simple_client.getPets().forEach(p->{
@@ -90,10 +88,10 @@ public class Clinic implements IClinic{
      * @param name Имя клиента
      */
     @Override
-    public void deleteClient(String name) {
-        for(Map.Entry<Integer,Client> simple_KVclient:clients.entrySet()){
-            if(simple_KVclient.getValue().getName().equals(name)){
-                clients.remove(simple_KVclient.getKey(), simple_KVclient.getValue());
+    public synchronized void deleteClient(String name) {
+        for(Map.Entry<Integer,Client> simple_KVClient:clients.entrySet()){
+            if(simple_KVClient.getValue().getName().equals(name)){
+                clients.remove(simple_KVClient.getKey(), simple_KVClient.getValue());
             }
         }
     }
@@ -104,7 +102,7 @@ public class Clinic implements IClinic{
      * @param namePet Имя питомца
      */
     @Override
-    public void deletePet(String name,String namePet){
+    public synchronized void deletePet(String name,String namePet){
         for(Client simple_client:clients.values()){
             if(simple_client.getName().equals(name)){
                 simple_client.deletePet(namePet);
@@ -118,7 +116,7 @@ public class Clinic implements IClinic{
      * @return Список совпадений
      */
     @Override
-    public List<Client> searchClient(String name){
+    public synchronized List<Client> searchClient(String name){
         List<Client> result=new LinkedList<>();
         for(Client simple_client:clients.values()){
             if(simple_client.getName().contains(name)){
@@ -134,7 +132,7 @@ public class Clinic implements IClinic{
      * @return Список клиентов с такими питомцами
      */
     @Override
-    public List<Client> searchPet(String namePet){
+    public synchronized List<Client> searchPet(String namePet){
         List<Client> result = new LinkedList<>();
         for(Client simple_client:clients.values()){
             List<Pet> pets= new LinkedList<>(simple_client.getPets());

@@ -2,10 +2,7 @@ package com.pitisha96.clients;
 
 import com.pitisha96.animals.Pet;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Клиент
@@ -21,7 +18,7 @@ public class Client {
     /**
      * Список животных
      */
-    private List<Pet> pets;
+    private Set<Pet> pets;
 
     /**
      * Конструктор клиента
@@ -55,7 +52,7 @@ public class Client {
         if(pets != null){
             pets.add(pet);
         }else{
-            pets=new LinkedList<>();
+            pets=new TreeSet<>();
             pets.add(pet);
         }
     }
@@ -64,11 +61,11 @@ public class Client {
      * Получить список питомцев
      * @return возвращает список питомцев
      */
-    public List<Pet> getPets() {
+    public Set<Pet> getPets() {
         if(pets!=null){
             return pets;
         }
-        return Collections.emptyList();
+        return Collections.emptySet();
     }
 
     /**
