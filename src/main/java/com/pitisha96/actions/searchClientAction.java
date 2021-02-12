@@ -1,10 +1,9 @@
 package com.pitisha96.actions;
 
 import com.pitisha96.IClinic;
-import com.pitisha96.Validator;
+import com.pitisha96.validators.Validator;
 import com.pitisha96.clients.Client;
 
-import java.io.IOException;
 import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 import java.util.List;

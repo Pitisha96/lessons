@@ -2,7 +2,7 @@ package com.pitisha96.actions;
 
 
 import com.pitisha96.IClinic;
-import com.pitisha96.Validator;
+import com.pitisha96.validators.Validator;
 
 /**
  * Описывает действия программы

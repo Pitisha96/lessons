@@ -2,7 +2,7 @@ package com.pitisha96.actions;
 
 import com.pitisha96.Clinic;
 import com.pitisha96.IClinic;
-import com.pitisha96.Validator;
+import com.pitisha96.validators.Validator;
 import com.pitisha96.clients.Client;
 import org.junit.jupiter.api.Test;
 

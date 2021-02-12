@@ -1,4 +1,4 @@
-package com.pitisha96;
+package com.pitisha96.validators;
 
 import java.io.Closeable;
 import java.util.InputMismatchException;

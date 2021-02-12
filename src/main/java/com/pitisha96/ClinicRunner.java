@@ -1,6 +1,7 @@
 package com.pitisha96;
 
 import com.pitisha96.actions.*;
+import com.pitisha96.validators.Validator;
 
 import java.util.Scanner;
 
@@ -19,19 +20,17 @@ public class ClinicRunner {
             clinic.loadActions(new DeletePetAction());
             clinic.loadActions(new SearchPetAction());
             clinic.loadActions(new ShowClientsAction());
-            do{
-                try {
-                    clinic.show();
-                    clinic.doAction(validator);
-                }catch (UnsupportedOperationException e){
-                    System.out.println("такая операция не поддерживается");
-                    throw e;
-                }catch (IllegalArgumentException e){
-                    validator.getString("");
-                    System.out.println("вы ввели не корректные данные");
-                    throw e;
-                }
-            }while(true);
+            do try {
+                clinic.show();
+                clinic.doAction(validator);
+            } catch (UnsupportedOperationException e) {
+                System.out.println("такая операция не поддерживается");
+                throw e;
+            } catch (IllegalArgumentException e) {
+                validator.getString("");
+                System.out.println("вы ввели не корректные данные");
+                throw e;
+            } while(true);
         }
     }
 }

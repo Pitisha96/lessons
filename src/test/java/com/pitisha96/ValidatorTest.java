@@ -1,5 +1,6 @@
 package com.pitisha96;
 
+import com.pitisha96.validators.Validator;
 import org.junit.jupiter.api.Test;
 
 import java.io.StringReader;

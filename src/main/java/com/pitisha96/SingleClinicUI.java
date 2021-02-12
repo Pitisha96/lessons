@@ -1,6 +1,7 @@
 package com.pitisha96;
 
 import com.pitisha96.actions.Action;
+import com.pitisha96.validators.Validator;
 
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
@@ -14,6 +15,7 @@ public class SingleClinicUI implements ClinicUI{
     private final IClinic clinic;
     private final Validator validator;
     private final Map<Integer, Action> actions=new ConcurrentHashMap<>();
+
 
     /**
      * Конструктор интерфейса клиники
